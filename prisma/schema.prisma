@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Guild {
+  id      String @id
+  ownerId String @map("owner_id")
+
+  @@map("guilds")
+}
+
+model Member {
+  id      String @id
+  guildId String @map("guild_id")
+
+  @@map("members")
+}
